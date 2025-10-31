@@ -1,7 +1,7 @@
 import * as React from "react";
 
 type ButtonVariant = "default" | "outline";
-type ButtonSize = "default" | "icon";
+type ButtonSize = "default" | "icon" | "sm";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,7 +25,12 @@ export function Button({
     variant === "outline"
       ? "border border-input bg-background hover:bg-accent"
       : "bg-primary text-primary-foreground hover:opacity-90";
-  const sizeClass = size === "icon" ? "h-9 w-9" : "h-9 px-4";
+  const sizeClass =
+    size === "icon"
+      ? "h-9 w-9"
+      : size === "sm"
+      ? "h-8 px-3 text-sm"
+      : "h-9 px-4";
 
   return (
     <button

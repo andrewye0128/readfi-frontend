@@ -1,17 +1,11 @@
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/mode-toggle";
+import Router from "@/router/router";
 
 function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground transition-colors duration-300">
-        <h1 className="text-3xl font-bold mb-6">ReadFi 前端測試頁</h1>
-        <p className="mb-4 text-center">
-          這是一個支援明暗主題切換的 React + Tailwind + shadcn/ui 專案
-        </p>
-        <ModeToggle />
-      </div>
+      <Router />
     </ThemeProvider>
   );
 }
