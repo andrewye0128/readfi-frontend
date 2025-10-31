@@ -10,6 +10,7 @@ import Resale from "@/pages/Resale";
 import Governance from "@/pages/Governance";
 import Creator from "@/pages/Creator";
 import WalletCenter from "@/pages/WalletCenter";
+import WalletTest from "@/pages/WalletTest";
 import NotFound from "@/pages/error-pages/NotFound";
 
 export default function Router() {
@@ -27,6 +28,7 @@ export default function Router() {
         <Route path="/bookshelf" element={<Bookshelf />} />
         <Route path="/resale" element={<Resale />} />
         <Route path="/wallet" element={<WalletCenter />} />
+        <Route path="/wallet-test" element={<WalletTest />} />
         <Route path="/governance" element={<Governance />} />
         <Route path="/creator" element={<Creator />} />
         <Route path="/profile" element={<Profile />} />

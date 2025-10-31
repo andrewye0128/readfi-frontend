@@ -1,11 +1,14 @@
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { WalletProvider } from "@/contexts/WalletContext";
 import Router from "@/router/router";
 
 function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <Router />
+      <WalletProvider>
+        <Router />
+      </WalletProvider>
     </ThemeProvider>
   );
 }
