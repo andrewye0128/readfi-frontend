@@ -38,6 +38,13 @@ export default function Navbar() {
               {/* 主題切換按鈕 */}
               {/* <ModeToggle /> */}
 
+              {/* Profile 連結 */}
+              {/* <Link to="/profile">
+                <Button variant="outline" size="icon">
+                  <User className="h-5 w-5" />
+                </Button>
+              </Link> */}
+
               {address ? (
                 /* 已連接錢包 - 顯示用戶資訊 */
                 <div className="relative">

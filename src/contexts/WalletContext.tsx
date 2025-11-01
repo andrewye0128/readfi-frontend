@@ -166,48 +166,37 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   };
 
   const connectImToken = async () => {
-    // 檢查是否在 imToken 瀏覽器中
-    if (window.ethereum && window.ethereum.isImToken) {
-      try {
-        setIsConnecting(true);
+    // 直接檢查 window.ethereum 是否存在
+    if (!window.ethereum) {
+      toast.error("未檢測到錢包，請確保已安裝 imToken 或 MetaMask");
+      return;
+    }
 
-        // 請求連接錢包
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
+    try {
+      setIsConnecting(true);
 
-        if (accounts.length > 0) {
-          const account = accounts[0];
-          setAddress(account);
-          setWalletType("imtoken");
-          localStorage.setItem("walletAddress", account);
-          localStorage.setItem("walletType", "imtoken");
-          toast.success("imToken 連接成功");
-        }
-      } catch (error: any) {
-        console.error("連接 imToken 失敗:", error);
-        if (error.code === 4001) {
-          toast.error("用戶拒絕連接請求");
-        } else {
-          toast.error("連接錢包失敗");
-        }
-      } finally {
-        setIsConnecting(false);
+      // 直接請求連接錢包
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      if (accounts.length > 0) {
+        const account = accounts[0];
+        setAddress(account);
+        setWalletType("imtoken");
+        localStorage.setItem("walletAddress", account);
+        localStorage.setItem("walletType", "imtoken");
+        toast.success("連接成功");
       }
-    } else {
-      // 如果不在 imToken 中，嘗試打開 imToken deep link
-      const dappUrl = window.location.href;
-      const imTokenUrl = `imtokenv2://navigate/DappView?url=${encodeURIComponent(
-        dappUrl
-      )}`;
-
-      toast.info("正在打開 imToken...");
-      window.location.href = imTokenUrl;
-
-      // 如果 deep link 失敗，提示用戶手動打開
-      setTimeout(() => {
-        toast.error("請在 imToken App 中打開此頁面");
-      }, 2000);
+    } catch (error: any) {
+      console.error("連接失敗:", error);
+      if (error.code === 4001) {
+        toast.error("用戶拒絕連接請求");
+      } else {
+        toast.error("連接錢包失敗，請重試");
+      }
+    } finally {
+      setIsConnecting(false);
     }
   };
 
