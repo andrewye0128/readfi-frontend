@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BookOpen, User, Copy, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/mode-toggle";
 import { useWallet } from "@/contexts/WalletContext";
 import { ConnectWalletDialog } from "@/components/ConnectWalletDialog";
 import { formatAddress, copyToClipboard } from "@/lib/wallet";
 import { toast } from "@/lib/toast";
 
 export default function Navbar() {
-  const { address, disconnect } = useWallet();
+  const { address, walletType, disconnect } = useWallet();
   const [showWalletDialog, setShowWalletDialog] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
 
@@ -34,6 +35,9 @@ export default function Navbar() {
             </Link>
 
             <div className="flex items-center gap-2">
+              {/* 主題切換按鈕 */}
+              <ModeToggle />
+
               {address ? (
                 /* 已連接錢包 - 顯示用戶資訊 */
                 <div className="relative">
@@ -55,9 +59,20 @@ export default function Navbar() {
                       <div className="absolute right-0 mt-2 w-64 bg-white border border-border rounded-xl shadow-lg z-50 overflow-hidden">
                         {/* 地址資訊 */}
                         <div className="p-4 bg-secondary border-b border-border">
-                          <p className="text-xs text-muted-foreground mb-1">
-                            已連接地址
-                          </p>
+                          <div className="flex items-center justify-between mb-1">
+                            <p className="text-xs text-muted-foreground">
+                              已連接地址
+                            </p>
+                            {walletType && (
+                              <span className="text-xs px-2 py-0.5 bg-white rounded-md text-muted-foreground">
+                                {walletType === "metamask"
+                                  ? "🦊 MetaMask"
+                                  : walletType === "imtoken"
+                                  ? "💎 imToken"
+                                  : "🔵 WalletConnect"}
+                              </span>
+                            )}
+                          </div>
                           <div className="flex items-center justify-between">
                             <code className="text-sm font-mono text-foreground">
                               {formatAddress(address)}

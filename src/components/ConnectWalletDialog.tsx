@@ -11,7 +11,12 @@ export function ConnectWalletDialog({
   open,
   onClose,
 }: ConnectWalletDialogProps) {
-  const { connectMetaMask, connectWalletConnect, isConnecting } = useWallet();
+  const {
+    connectMetaMask,
+    connectImToken,
+    connectWalletConnect,
+    isConnecting,
+  } = useWallet();
   const [loadingWallet, setLoadingWallet] = useState<string | null>(null);
 
   if (!open) return null;
@@ -23,11 +28,18 @@ export function ConnectWalletDialog({
     onClose();
   };
 
+  const handleImTokenConnect = async () => {
+    setLoadingWallet("imtoken");
+    await connectImToken();
+    setLoadingWallet(null);
+    onClose();
+  };
+
   const handleWalletConnectConnect = async () => {
     setLoadingWallet("walletconnect");
     await connectWalletConnect();
     setLoadingWallet(null);
-    // onClose(); // WalletConnect 目前未完整實作，不關閉
+    onClose();
   };
 
   return (
@@ -36,15 +48,15 @@ export function ConnectWalletDialog({
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
 
       {/* Dialog */}
-      <div className="relative bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 p-6">
+      <div className="relative bg-card dark:bg-card rounded-2xl shadow-xl max-w-md w-full mx-4 p-6 border border-border">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-foreground">連接你的錢包</h2>
+          <h2 className="text-xl font-bold text-readfi-blue">連接你的錢包</h2>
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-lg hover:bg-secondary flex items-center justify-center transition-colors"
           >
-            <X className="w-5 h-5 text-muted-foreground" />
+            <X className="w-5 h-5 text-muted-foreground hover:text-foreground" />
           </button>
         </div>
 
@@ -54,10 +66,10 @@ export function ConnectWalletDialog({
           <button
             onClick={handleMetaMaskConnect}
             disabled={isConnecting}
-            className="w-full flex items-center justify-between p-4 bg-white border-2 border-border rounded-xl hover:border-foreground/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-between p-4 bg-background border-2 border-border rounded-xl hover:border-readfi-blue hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-readfi-orange/10 flex items-center justify-center group-hover:bg-readfi-orange/20 transition-colors">
                 <span className="text-2xl">🦊</span>
               </div>
               <div className="text-left">
@@ -66,11 +78,37 @@ export function ConnectWalletDialog({
               </div>
             </div>
             {loadingWallet === "metamask" ? (
-              <div className="flex items-center justify-center w-20 h-10 bg-black rounded-lg">
+              <div className="flex items-center justify-center w-20 h-10 bg-readfi-blue rounded-lg">
                 <Loader2 className="w-4 h-4 text-white animate-spin" />
               </div>
             ) : (
-              <div className="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium">
+              <div className="px-4 py-2 bg-readfi-blue hover:bg-readfi-blue/90 text-white rounded-lg text-sm font-medium transition-colors">
+                連接
+              </div>
+            )}
+          </button>
+
+          {/* imToken */}
+          <button
+            onClick={handleImTokenConnect}
+            disabled={isConnecting}
+            className="w-full flex items-center justify-between p-4 bg-background border-2 border-border rounded-xl hover:border-readfi-blue hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-readfi-blue/10 flex items-center justify-center group-hover:bg-readfi-blue/20 transition-colors">
+                <span className="text-2xl">💎</span>
+              </div>
+              <div className="text-left">
+                <p className="font-semibold text-foreground">imToken</p>
+                <p className="text-sm text-muted-foreground">行動錢包</p>
+              </div>
+            </div>
+            {loadingWallet === "imtoken" ? (
+              <div className="flex items-center justify-center w-20 h-10 bg-readfi-blue rounded-lg">
+                <Loader2 className="w-4 h-4 text-white animate-spin" />
+              </div>
+            ) : (
+              <div className="px-4 py-2 bg-readfi-blue hover:bg-readfi-blue/90 text-white rounded-lg text-sm font-medium transition-colors">
                 連接
               </div>
             )}
@@ -80,10 +118,10 @@ export function ConnectWalletDialog({
           <button
             onClick={handleWalletConnectConnect}
             disabled={isConnecting}
-            className="w-full flex items-center justify-between p-4 bg-white border-2 border-border rounded-xl hover:border-foreground/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-between p-4 bg-background border-2 border-border rounded-xl hover:border-readfi-blue hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-readfi-blue/10 flex items-center justify-center group-hover:bg-readfi-blue/20 transition-colors">
                 <svg
                   className="w-6 h-6"
                   viewBox="0 0 40 40"
@@ -92,22 +130,22 @@ export function ConnectWalletDialog({
                 >
                   <path
                     d="M8.19 14.77a13.95 13.95 0 0 1 23.62 0l.78.94a.5.5 0 0 1-.08.7l-2.67 2.23a.25.25 0 0 1-.35-.03l-1.08-1.27a9.73 9.73 0 0 0-16.47 0l-1.15 1.36a.25.25 0 0 1-.35.03l-2.67-2.23a.5.5 0 0 1-.08-.7l.78-.94-.28-.09zm29.17 4.61 2.37 1.98a.5.5 0 0 1 .08.7l-10.7 12.6a.5.5 0 0 1-.7.07l-7.6-6.33a.13.13 0 0 0-.17 0l-7.6 6.33a.5.5 0 0 1-.7-.07L1.64 21.06a.5.5 0 0 1 .08-.7l2.37-1.98a.5.5 0 0 1 .65.03l7.6 6.33a.13.13 0 0 0 .17 0l7.6-6.33a.5.5 0 0 1 .65-.03z"
-                    fill="#3B99FC"
+                    fill="hsl(var(--primary))"
                   />
                 </svg>
               </div>
               <div className="text-left">
                 <p className="font-semibold text-foreground">WalletConnect</p>
-                <p className="text-sm text-muted-foreground">行動錢包配對</p>
+                <p className="text-sm text-muted-foreground">掃描 QR Code</p>
               </div>
             </div>
             {loadingWallet === "walletconnect" ? (
-              <div className="flex items-center justify-center w-20 h-10 bg-black rounded-lg">
+              <div className="flex items-center justify-center w-20 h-10 bg-readfi-blue rounded-lg">
                 <Loader2 className="w-4 h-4 text-white animate-spin" />
               </div>
             ) : (
-              <div className="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium">
-                生成QR
+              <div className="px-4 py-2 bg-readfi-blue hover:bg-readfi-blue/90 text-white rounded-lg text-sm font-medium transition-colors">
+                掃描
               </div>
             )}
           </button>

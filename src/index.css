@@ -107,71 +107,142 @@ table {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  /* === ReadFi 品牌色彩 === */
+  /* 主色 - ReadFi Blue (#4A90E2) */
+  --primary: 210 79% 58%;
+  --primary-foreground: 0 0% 100%;
+
+  /* 強調色 - ReadFi Orange (#FF6B35) */
+  --accent: 15 100% 60%;
+  --accent-foreground: 0 0% 100%;
+
+  /* 背景 & 文字 */
+  --background: 0 0% 100%;
+  --foreground: 210 11% 24%; /* #2C3E50 深灰 */
+
+  /* 卡片 */
+  --card: 0 0% 100%;
+  --card-foreground: 210 11% 24%;
+
+  /* 彈窗 */
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 11% 24%;
+
+  /* 次要色 */
+  --secondary: 210 14% 93%; /* #ECF0F1 淺灰 */
+  --secondary-foreground: 210 11% 24%;
+
+  /* 靜音色 */
+  --muted: 210 14% 93%;
+  --muted-foreground: 210 9% 53%;
+
+  /* 成功色 - 綠色 (#2ECC71) */
+  --success: 145 63% 49%;
+  --success-foreground: 0 0% 100%;
+
+  /* 特殊色 - 紫色 (#9B59B6) NFT/限量版 */
+  --special: 283 39% 53%;
+  --special-foreground: 0 0% 100%;
+
+  /* 警示色 - 黃色 (#F39C12) */
+  --warning: 37 90% 51%;
+  --warning-foreground: 0 0% 100%;
+
+  /* 錯誤/刪除 */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* 邊框 & 輸入框 */
+  --border: 210 14% 89%;
+  --input: 210 14% 89%;
+  --ring: 210 79% 58%;
+
+  /* 圖表顏色 */
+  --chart-1: 210 79% 58%; /* ReadFi Blue */
+  --chart-2: 15 100% 60%; /* ReadFi Orange */
+  --chart-3: 145 63% 49%; /* Green */
+  --chart-4: 283 39% 53%; /* Purple */
+  --chart-5: 37 90% 51%; /* Yellow */
+
+  /* 側邊欄 */
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 210 11% 24%;
+  --sidebar-primary: 210 79% 58%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 210 14% 93%;
+  --sidebar-accent-foreground: 210 11% 24%;
+  --sidebar-border: 210 14% 89%;
+  --sidebar-ring: 210 79% 58%;
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  /* === ReadFi 深色模式 === */
+  /* 背景 & 文字 */
+  --background: 210 18% 12%; /* 深藍灰背景 */
+  --foreground: 0 0% 95%; /* 淺色文字 */
+
+  /* 卡片 */
+  --card: 210 16% 16%;
+  --card-foreground: 0 0% 95%;
+
+  /* 彈窗 */
+  --popover: 210 16% 16%;
+  --popover-foreground: 0 0% 95%;
+
+  /* 主色 - ReadFi Blue (深色模式稍微提亮) */
+  --primary: 210 85% 65%;
+  --primary-foreground: 210 18% 12%;
+
+  /* 強調色 - ReadFi Orange (深色模式保持鮮豔) */
+  --accent: 15 100% 65%;
+  --accent-foreground: 210 18% 12%;
+
+  /* 次要色 */
+  --secondary: 210 15% 22%;
+  --secondary-foreground: 0 0% 95%;
+
+  /* 靜音色 */
+  --muted: 210 15% 22%;
+  --muted-foreground: 210 8% 65%;
+
+  /* 成功色 */
+  --success: 145 63% 55%;
+  --success-foreground: 210 18% 12%;
+
+  /* 特殊色 - 紫色 */
+  --special: 283 45% 60%;
+  --special-foreground: 0 0% 100%;
+
+  /* 警示色 */
+  --warning: 37 90% 55%;
+  --warning-foreground: 210 18% 12%;
+
+  /* 錯誤 */
+  --destructive: 0 84% 65%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* 邊框 & 輸入框 */
+  --border: 210 15% 25%;
+  --input: 210 15% 25%;
+  --ring: 210 85% 65%;
+
+  /* 圖表顏色（深色模式稍微提亮）*/
+  --chart-1: 210 85% 65%; /* ReadFi Blue */
+  --chart-2: 15 100% 65%; /* ReadFi Orange */
+  --chart-3: 145 63% 55%; /* Green */
+  --chart-4: 283 45% 60%; /* Purple */
+  --chart-5: 37 90% 55%; /* Yellow */
+
+  /* 側邊欄 */
+  --sidebar: 210 16% 16%;
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 210 85% 65%;
+  --sidebar-primary-foreground: 210 18% 12%;
+  --sidebar-accent: 210 15% 22%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 210 15% 25%;
+  --sidebar-ring: 210 85% 65%;
 }
 
 @layer base {
@@ -180,5 +251,80 @@ table {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* === ReadFi 品牌色彩工具類別 === */
+@layer utilities {
+  /* 主色 - ReadFi Blue */
+  .bg-readfi-blue {
+    background-color: hsl(var(--primary));
+  }
+  .text-readfi-blue {
+    color: hsl(var(--primary));
+  }
+  .border-readfi-blue {
+    border-color: hsl(var(--primary));
+  }
+
+  /* 強調色 - ReadFi Orange */
+  .bg-readfi-orange {
+    background-color: hsl(var(--accent));
+  }
+  .text-readfi-orange {
+    color: hsl(var(--accent));
+  }
+  .border-readfi-orange {
+    border-color: hsl(var(--accent));
+  }
+
+  /* 成功色 - 綠色 */
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+  .text-success {
+    color: hsl(var(--success));
+  }
+  .border-success {
+    border-color: hsl(var(--success));
+  }
+
+  /* 特殊色 - 紫色 (NFT/限量版) */
+  .bg-special {
+    background-color: hsl(var(--special));
+  }
+  .text-special {
+    color: hsl(var(--special));
+  }
+  .border-special {
+    border-color: hsl(var(--special));
+  }
+
+  /* 警示色 - 黃色 */
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+  .border-warning {
+    border-color: hsl(var(--warning));
+  }
+
+  /* ReadFi 漸層背景 */
+  .bg-readfi-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 100%
+    );
+  }
+
+  .bg-readfi-gradient-soft {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.1) 0%,
+      hsl(var(--accent) / 0.1) 100%
+    );
   }
 }

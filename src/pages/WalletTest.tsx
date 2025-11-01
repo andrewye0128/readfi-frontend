@@ -8,7 +8,15 @@ import { formatAddress } from "@/lib/wallet";
 import { Wallet, CheckCircle2, XCircle } from "lucide-react";
 
 export default function WalletTest() {
-  const { address, isConnecting, connectMetaMask, disconnect } = useWallet();
+  const {
+    address,
+    walletType,
+    isConnecting,
+    connectMetaMask,
+    connectImToken,
+    connectWalletConnect,
+    disconnect,
+  } = useWallet();
   const [showDialog, setShowDialog] = useState(false);
 
   return (
@@ -65,7 +73,11 @@ export default function WalletTest() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">✓</span>
-                <span>WalletConnect UI（待完整配置）</span>
+                <span>imToken 行動錢包連接</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 mt-0.5">✓</span>
+                <span>WalletConnect QR Code 連接</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">✓</span>
@@ -150,7 +162,15 @@ export default function WalletTest() {
               </div>
               <div className="flex justify-between items-center p-3 bg-background rounded-lg">
                 <span className="text-muted-foreground">連接方式:</span>
-                <span className="text-foreground">MetaMask</span>
+                <span className="text-foreground">
+                  {walletType === "metamask"
+                    ? "🦊 MetaMask"
+                    : walletType === "imtoken"
+                    ? "💎 imToken"
+                    : walletType === "walletconnect"
+                    ? "🔵 WalletConnect"
+                    : "未知"}
+                </span>
               </div>
             </div>
           </div>
@@ -167,19 +187,31 @@ export default function WalletTest() {
             >
               打開連接對話框
             </Button>
+            <Button
+              onClick={connectMetaMask}
+              variant="outline"
+              disabled={isConnecting}
+            >
+              連接 MetaMask
+            </Button>
+            <Button
+              onClick={connectImToken}
+              variant="outline"
+              disabled={isConnecting}
+            >
+              連接 imToken
+            </Button>
+            <Button
+              onClick={connectWalletConnect}
+              variant="outline"
+              disabled={isConnecting}
+            >
+              連接 WalletConnect
+            </Button>
             {address && (
-              <>
-                <Button onClick={disconnect} variant="outline">
-                  斷開連接
-                </Button>
-                <Button
-                  onClick={connectMetaMask}
-                  variant="outline"
-                  disabled={isConnecting}
-                >
-                  重新連接
-                </Button>
-              </>
+              <Button onClick={disconnect} variant="outline">
+                斷開連接
+              </Button>
             )}
           </div>
         </div>

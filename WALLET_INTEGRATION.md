@@ -7,18 +7,21 @@
 ### ✅ 已實作功能
 
 1. **錢包連接對話框** (`ConnectWalletDialog`)
+
    - MetaMask 瀏覽器擴充連接
    - WalletConnect 支援（UI 完成，需要進一步配置）
    - 載入狀態顯示（三個點動畫）
    - 可關閉彈窗（X 按鈕）
 
 2. **全局錢包狀態管理** (`WalletContext`)
+
    - 使用 React Context 管理連接狀態
    - 自動保存連接狀態到 localStorage
    - 監聽帳戶變更
    - 支援斷開連接
 
 3. **導航欄整合** (`Navbar`)
+
    - 未連接時：顯示「連接錢包」按鈕
    - 已連接時：顯示用戶圖標
    - 點擊用戶圖標顯示下拉選單：
@@ -78,7 +81,9 @@ function MyComponent() {
 ```tsx
 import { formatAddress } from "@/lib/wallet";
 
-const shortAddress = formatAddress("0x1234567890123456789012345678901234567890");
+const shortAddress = formatAddress(
+  "0x1234567890123456789012345678901234567890"
+);
 // 結果: "0x1234...7890"
 ```
 
@@ -101,14 +106,17 @@ const handleCopy = async () => {
 ### 連接錢包流程
 
 1. **點擊「連接錢包」按鈕**
+
    - 位置：導航欄右上角
    - 觸發：打開 `ConnectWalletDialog`
 
 2. **選擇錢包類型**
+
    - **MetaMask**: 點擊後自動請求連接
    - **WalletConnect**: 顯示生成 QR Code（待完整實作）
 
 3. **MetaMask 簽名流程**
+
    - 點擊「連接」按鈕
    - 顯示載入動畫（三個點）
    - MetaMask 彈出簽名請求
@@ -123,6 +131,7 @@ const handleCopy = async () => {
 ### 已連接狀態
 
 連接成功後：
+
 - 導航欄顯示用戶圖標（User icon）
 - 點擊圖標顯示帳戶選單：
   - 格式化地址顯示
@@ -143,6 +152,7 @@ const handleCopy = async () => {
 ### 符合 Figma 設計
 
 1. **彈窗設計** (圖一)
+
    - 白色背景 + 圓角
    - MetaMask 🦊 圖標 + 「瀏覽器擴充」描述
    - WalletConnect 圖標 + 「行動錢包配對」描述
@@ -150,6 +160,7 @@ const handleCopy = async () => {
    - 底部安全圖示和「什麼是錢包?」連結
 
 2. **載入狀態** (圖二)
+
    - 三個點旋轉動畫
    - 黑色背景按鈕
    - 使用 `Loader2` 圖標
@@ -172,10 +183,12 @@ const handleCopy = async () => {
 ## 🔒 安全性考慮
 
 1. **連接狀態驗證**
+
    - 啟動時驗證 localStorage 中的地址
    - 確認地址仍在 MetaMask 連接列表中
 
 2. **帳戶變更監聽**
+
    - 監聽 `accountsChanged` 事件
    - 自動更新或斷開連接
 
@@ -196,9 +209,9 @@ npm install @web3modal/wagmi wagmi viem @tanstack/react-query
 
 ```tsx
 // 配置 WalletConnect
-import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
+import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 
-const projectId = 'YOUR_PROJECT_ID'
+const projectId = "YOUR_PROJECT_ID";
 // ... 配置代碼
 ```
 
@@ -246,18 +259,21 @@ const projectId = 'YOUR_PROJECT_ID'
 ## 🐛 常見問題
 
 ### Q: 點擊連接沒有反應？
+
 A: 檢查是否安裝 MetaMask，打開瀏覽器控制台查看錯誤訊息。
 
 ### Q: 連接後刷新頁面斷開了？
+
 A: 檢查瀏覽器是否清除了 localStorage。
 
 ### Q: WalletConnect 無法使用？
+
 A: 目前 WalletConnect 僅有 UI，需要安裝相關依賴並配置。
 
 ## 📞 技術支援
 
 如有問題或建議，請參考：
+
 - MetaMask 文檔: https://docs.metamask.io/
 - WalletConnect 文檔: https://docs.walletconnect.com/
 - Ethereum Provider API: https://eips.ethereum.org/EIPS/eip-1193
-
