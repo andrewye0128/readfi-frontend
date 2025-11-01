@@ -9,14 +9,25 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      buffer: "buffer",
+      process: "process/browser",
+      util: "util",
     },
   },
   define: {
     global: "globalThis",
     "process.env": {},
   },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+    rollupOptions: {
+      plugins: [],
+    },
+  },
   optimizeDeps: {
-    include: ["buffer", "util"],
+    include: ["buffer", "util", "process"],
     esbuildOptions: {
       define: {
         global: "globalThis",
