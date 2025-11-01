@@ -15,7 +15,12 @@ if (!fs.existsSync(viteConfigPath)) {
   process.exit(1);
 }
 const viteConfig = fs.readFileSync(viteConfigPath, "utf-8");
-if (!viteConfig.includes("base: '/readfi-frontend/'")) {
+// 支援單引號或雙引號
+const hasCorrectBase =
+  viteConfig.includes('base: "/readfi-frontend/"') ||
+  viteConfig.includes("base: '/readfi-frontend/'");
+
+if (!hasCorrectBase) {
   console.error(
     '❌ [vite.config.ts] base 設定錯誤或缺失，請確認為 base: "/readfi-frontend/".'
   );
