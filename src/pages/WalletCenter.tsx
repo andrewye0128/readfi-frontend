@@ -126,7 +126,7 @@ export default function WalletCenter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white border border-border rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-readfi-blue rounded-lg flex items-center justify-center">
                 <Wallet className="w-5 h-5 text-white" strokeWidth={2} />
               </div>
               <span className="text-sm text-muted-foreground font-medium">
@@ -143,7 +143,7 @@ export default function WalletCenter() {
 
           <div className="bg-white border border-border rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-success rounded-lg flex items-center justify-center">
                 <Gift className="w-5 h-5 text-white" strokeWidth={2} />
               </div>
               <span className="text-sm text-muted-foreground font-medium">
@@ -156,7 +156,7 @@ export default function WalletCenter() {
             <Button
               size="sm"
               onClick={handleClaimRewards}
-              className="bg-black hover:bg-black/90 text-white w-full"
+              className="bg-success hover:bg-success/90 text-white w-full"
             >
               領取獎勵
             </Button>
@@ -164,7 +164,7 @@ export default function WalletCenter() {
 
           <div className="bg-white border border-border rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-special rounded-lg flex items-center justify-center">
                 <Lock className="w-5 h-5 text-white" strokeWidth={2} />
               </div>
               <span className="text-sm text-muted-foreground font-medium">

@@ -48,7 +48,7 @@ export function ConnectWalletDialog({
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
 
       {/* Dialog */}
-      <div className="relative bg-card dark:bg-card rounded-2xl shadow-xl max-w-md w-full mx-4 p-6 border border-border">
+      <div className="relative bg-white dark:bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 p-6 border border-border">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-readfi-blue">連接你的錢包</h2>

@@ -81,10 +81,10 @@ export default function Marketplace() {
           {/* Category Pills */}
           <div className="flex flex-wrap gap-2">
             <Badge
-              className={`cursor-pointer ${
+              className={`cursor-pointer transition-all ${
                 selectedCategory === "全部"
-                  ? "bg-black text-white"
-                  : "bg-secondary text-foreground"
+                  ? "bg-readfi-blue text-white shadow-md"
+                  : "bg-secondary text-foreground hover:bg-readfi-blue/10 hover:text-readfi-blue"
               }`}
               onClick={() => setSelectedCategory("全部")}
             >
@@ -93,10 +93,10 @@ export default function Marketplace() {
             {categories.map((category) => (
               <Badge
                 key={category.id}
-                className={`cursor-pointer ${
+                className={`cursor-pointer transition-all ${
                   selectedCategory === category.name
-                    ? "bg-black text-white"
-                    : "bg-secondary text-foreground"
+                    ? "bg-readfi-blue text-white shadow-md"
+                    : "bg-secondary text-foreground hover:bg-readfi-blue/10 hover:text-readfi-blue"
                 }`}
                 onClick={() => setSelectedCategory(category.name)}
               >

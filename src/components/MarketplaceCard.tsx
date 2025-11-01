@@ -34,22 +34,22 @@ export default function MarketplaceCard({ book }: MarketplaceCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden border border-border hover:border-foreground/20 transition-all group">
-      <div className="relative aspect-[2/3] overflow-hidden bg-secondary">
+    <div className="bg-white rounded-xl overflow-hidden border border-border hover:border-readfi-blue transition-all group hover:shadow-md">
+      <div className="relative aspect-2/3 overflow-hidden bg-secondary">
         <ImageWithFallback
           src={book.cover}
           alt={book.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
 
-        <Badge className="absolute top-2 right-2 bg-black text-white border-0 text-xs shadow-sm">
+        <Badge className="absolute top-2 right-2 bg-special text-white border-0 text-xs shadow-sm">
           {book.nftId}
         </Badge>
       </div>
 
       <div className="p-4 space-y-3">
         <div className="space-y-1">
-          <h4 className="text-foreground line-clamp-2 text-sm font-semibold leading-tight group-hover:text-black transition-colors">
+          <h4 className="text-foreground line-clamp-2 text-sm font-semibold leading-tight group-hover:text-readfi-blue transition-colors">
             {book.title}
           </h4>
           <p className="text-muted-foreground text-xs">{book.author}</p>
@@ -57,7 +57,7 @@ export default function MarketplaceCard({ book }: MarketplaceCardProps) {
 
         {/* Price */}
         <div className="flex items-baseline gap-2 pt-2">
-          <span className="text-xl font-bold text-foreground">
+          <span className="text-xl font-bold text-readfi-blue">
             {book.currentPrice}
           </span>
           <span className="text-muted-foreground text-sm">READ</span>
@@ -112,14 +112,14 @@ export default function MarketplaceCard({ book }: MarketplaceCardProps) {
         <div className="flex gap-2 pt-2">
           <Button
             onClick={handlePurchase}
-            className="flex-1 bg-black hover:bg-black/90 text-white text-sm"
+            className="flex-1 bg-readfi-orange hover:bg-readfi-orange/90 text-white text-sm"
           >
             立即購買
           </Button>
           <Button
             onClick={handleMakeOffer}
             variant="outline"
-            className="flex-1 text-sm"
+            className="flex-1 text-sm hover:border-readfi-blue hover:text-readfi-blue"
           >
             出價
           </Button>

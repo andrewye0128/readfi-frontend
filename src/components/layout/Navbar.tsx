@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 bg-white">
           <div className="flex h-16 items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
               <BookOpen className="h-6 w-6 text-primary" />
@@ -36,7 +36,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-2">
               {/* 主題切換按鈕 */}
-              <ModeToggle />
+              {/* <ModeToggle /> */}
 
               {address ? (
                 /* 已連接錢包 - 顯示用戶資訊 */

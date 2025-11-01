@@ -43,8 +43,8 @@ export default function NavTabs() {
               to={path}
               className={`flex items-center gap-2 px-5 py-4 text-sm font-medium transition-colors whitespace-nowrap border-b-2 ${
                 isActive(path)
-                  ? "text-foreground border-black"
-                  : "text-muted-foreground border-transparent hover:text-foreground"
+                  ? "text-readfi-blue border-readfi-blue font-semibold"
+                  : "text-muted-foreground border-transparent hover:text-readfi-blue hover:border-readfi-blue/30"
               }`}
             >
               <Icon className="w-4 h-4" strokeWidth={2} />

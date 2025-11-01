@@ -20,9 +20,9 @@ export default function BookCard({ book, onClick }: BookCardProps) {
     <Link
       to={`/book/${book.id}`}
       onClick={handleClick}
-      className="group block cursor-pointer bg-card rounded-xl overflow-hidden border border-border hover:border-foreground/20 transition-all duration-200 hover:shadow-lg"
+      className="group block cursor-pointer bg-card rounded-xl overflow-hidden border border-border hover:border-readfi-blue transition-all duration-200 hover:shadow-lg"
     >
-      <div className="relative aspect-[2/3] overflow-hidden bg-secondary">
+      <div className="relative aspect-2/3 overflow-hidden bg-secondary">
         <ImageWithFallback
           src={book.cover}
           alt={book.title}
@@ -33,17 +33,17 @@ export default function BookCard({ book, onClick }: BookCardProps) {
         {(book.isNew || book.isHot || book.isOwned) && (
           <div className="absolute top-2 left-2 flex flex-col gap-1.5">
             {book.isNew && (
-              <Badge className="bg-black text-white text-xs font-medium border-0 shadow-sm">
+              <Badge className="bg-readfi-orange text-white text-xs font-medium border-0 shadow-sm">
                 新書
               </Badge>
             )}
             {book.isHot && (
-              <Badge className="bg-black text-white text-xs font-medium border-0 shadow-sm">
+              <Badge className="bg-special text-white text-xs font-medium border-0 shadow-sm">
                 熱門
               </Badge>
             )}
             {book.isOwned && (
-              <Badge className="bg-black text-white text-xs font-medium border-0 shadow-sm">
+              <Badge className="bg-success text-white text-xs font-medium border-0 shadow-sm">
                 已擁有
               </Badge>
             )}
@@ -61,7 +61,7 @@ export default function BookCard({ book, onClick }: BookCardProps) {
 
       <div className="p-4 space-y-3">
         <div className="space-y-1">
-          <h4 className="text-foreground line-clamp-2 text-sm font-semibold leading-tight group-hover:text-primary transition-colors">
+          <h4 className="text-foreground line-clamp-2 text-sm font-semibold leading-tight group-hover:text-readfi-blue transition-colors">
             {book.title}
           </h4>
           <p className="text-muted-foreground text-xs line-clamp-1">
@@ -100,7 +100,7 @@ export default function BookCard({ book, onClick }: BookCardProps) {
                   {book.price} READ
                 </span>
               )}
-              <span className="text-sm font-semibold text-foreground">
+              <span className="text-sm font-semibold text-readfi-blue">
                 {book.readPrice || book.price} READ
               </span>
             </div>

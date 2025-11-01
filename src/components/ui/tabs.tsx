@@ -90,11 +90,10 @@ export function TabsTrigger({
       onClick={() => onValueChange(value)}
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-lg px-5 py-2.5 text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 border ${
         isActive
-          ? "bg-black text-black border-black shadow-sm"
-          : "bg-white text-muted-foreground border-border hover:bg-secondary hover:text-foreground"
+          ? "bg-readfi-blue text-white border-readfi-blue shadow-md"
+          : "bg-white text-muted-foreground border-border hover:bg-secondary hover:border-readfi-blue hover:text-readfi-blue"
       } ${className}`}
       data-state={isActive ? "active" : "inactive"}
-      style={isActive ? { color: "black" } : undefined}
     >
       {children}
     </button>

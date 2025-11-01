@@ -23,8 +23,8 @@ export function Button({
     "inline-flex items-center justify-center rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50 disabled:pointer-events-none";
   const variantClass =
     variant === "outline"
-      ? "border border-input bg-background hover:bg-accent"
-      : "bg-primary text-primary-foreground hover:opacity-90";
+      ? "border border-input bg-background hover:bg-accent hover:border-primary transition-all"
+      : "bg-primary text-primary-foreground hover:bg-primary/90 transition-all";
   const sizeClass =
     size === "icon"
       ? "h-9 w-9"

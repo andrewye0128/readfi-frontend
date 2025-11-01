@@ -14,25 +14,25 @@ export default function Home() {
     <Layout>
       {/* Hero Section */}
       <div className="mb-12">
-        <div className="relative h-64 rounded-lg overflow-hidden bg-linear-to-r from-primary to-primary/60">
+        <div className="relative h-64 rounded-lg overflow-hidden bg-readfi-gradient shadow-lg">
           <div className="absolute inset-0 flex items-center justify-center p-8">
             <div className="text-center">
-              <h1 className="text-4xl font-bold mb-4 text-white">
+              <h1 className="text-4xl font-bold mb-4 text-white drop-shadow-md">
                 歡迎來到 ReadFi
               </h1>
-              <p className="text-xl mb-6 text-white/90">
+              <p className="text-xl mb-6 text-white/95 drop-shadow">
                 探索無盡的閱讀世界，發現屬於你的故事
               </p>
               <div className="flex gap-4 justify-center">
                 <Link
                   to="/marketplace"
-                  className="inline-block bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                  className="inline-block bg-readfi-orange text-white px-6 py-3 rounded-lg font-semibold hover:bg-readfi-orange/90 transition-all shadow-md hover:shadow-lg"
                 >
                   開始探索
                 </Link>
                 <Link
                   to="/bookshelf"
-                  className="inline-block bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                  className="inline-block bg-white text-readfi-blue px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all shadow-md hover:shadow-lg"
                 >
                   我的書架
                 </Link>
@@ -50,7 +50,7 @@ export default function Home() {
             <Link
               key={category.id}
               to={`/search?category=${category.name}`}
-              className="flex flex-col items-center justify-center p-6 bg-card rounded-lg hover:bg-accent transition-colors cursor-pointer border border-border"
+              className="flex flex-col items-center justify-center p-6 bg-card rounded-lg hover:bg-accent hover:border-readfi-blue transition-all cursor-pointer border border-border"
             >
               <span className="text-4xl mb-2">{category.icon}</span>
               <span className="text-sm font-medium">{category.name}</span>
@@ -68,7 +68,7 @@ export default function Home() {
           </div>
           <Link
             to="/search"
-            className="flex items-center space-x-1 text-primary hover:underline"
+            className="flex items-center space-x-1 text-readfi-blue hover:text-readfi-orange transition-colors"
           >
             <span>查看更多</span>
             <ChevronRight className="h-4 w-4" />
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
           <Link
             to="/marketplace"
-            className="flex items-center space-x-1 text-primary hover:underline"
+            className="flex items-center space-x-1 text-readfi-blue hover:text-readfi-orange transition-colors"
           >
             <span>查看更多</span>
             <ChevronRight className="h-4 w-4" />
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
           <Link
             to="/marketplace"
-            className="flex items-center space-x-1 text-primary hover:underline"
+            className="flex items-center space-x-1 text-readfi-blue hover:text-readfi-orange transition-colors"
           >
             <span>查看更多</span>
             <ChevronRight className="h-4 w-4" />
